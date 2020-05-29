@@ -1,0 +1,22 @@
+<%- include("../partials/header") %>
+
+
+<div class="container" style="min-height: 80vh;">
+<div class="card"  style="width: 21.5em;margin:3rem auto;margin-top: 8rem;">
+ <div class="card-body">
+	<h1 class="card-title text-center" style="margin-bottom:3rem" >	Edit Comment</h1>
+	<p class="card-text"><a href="/audit">back to audit</a></p>
+<form action="/audit/<%=auditid%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+	<input type="text" value="<%=comment.text%>"name="comment[text]">
+   <%/*<input type="text" placeholder="author" name="comment[author]">*/%>
+	<button class="btn btn-primary"  style="margin-top: 1rem; margin-left: 6.5rem;">submit</button>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+
+<%- include("../partials/footer") %>

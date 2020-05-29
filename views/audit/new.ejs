@@ -1,0 +1,19 @@
+<%- include("../partials/header") %>
+
+<div class="container" style="min-height: 80vh;">
+<div class="card"  style="width: 21.5em;margin:3rem auto;margin-top: 8rem;">
+	<div class="card-body">
+	  <h1 class="card-title text-center" style="margin-bottom:2rem" >create a new info</h1>
+	  <p class="card-text"><a href="/audit">back to audit</a></p>
+      <form action="/audit" method="POST">
+	<input type="text" placeholder="title"style="margin-bottom: 3rem; margin-left: 3rem;" name="title">
+	<textarea name="description" style="margin-bottom: 3rem; margin-left: 3rem;">jnn</textarea>
+	<button class="btn btn-primary"  style="margin-top: 0rem; margin-left: 6.5rem;">submit</button>
+</form>
+</div>
+</div>
+</div>
+
+ <%- include("../partials/footer") %>
+
+

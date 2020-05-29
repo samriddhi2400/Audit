@@ -1,0 +1,24 @@
+<%- include ("../partials/header") %>
+<div class="jumbotron">
+    <h1 class="display-4">This is the audit page</h1>
+    <p class="lead">this is easy</p>
+    <a href="/audit/new">New Audit</a>
+     
+</div>
+    <% audit.forEach(function(audit){%>
+    <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= audit.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%=audit.createdAt.toLocaleDateString() %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">By <strong><%= audit.author.username %></strong></h6>
+          <p class="card-text"><%-audit.description%></p>
+          <a href="/audit/<%=audit._id%>" class="btn btn-sm btn-link" >More info</a>
+        
+         
+        </div>
+      </div>
+    <%})%>
+
+
+
+<%- include ("../partials/footer") %>

@@ -1,0 +1,68 @@
+<%- include("../partials/header") %>
+<div class="col-md-9">
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <h1 class="card-title"><%= audit.title %></h1>
+            <p class="card-text"><%= audit.description %></p>
+        
+           
+            <a href="/audit" style="float: right;" class="btn btn-sm btn-info" >Back to audit</a>
+           <%/*console.log(audit.author.id) */%>
+            <% /*console.log(currentUser._id)*/%>
+           <% if(currentUser  && audit.author.id.equals(currentUser._id)){%>
+            <a href="/audit/<%=audit._id%>/edit" class="btn btn-sm btn-info">Edit</a>
+            <!-- <form style="display: inline; padding-left: 1rem;" action="/audit/<%=audit._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-success">Delete</button>
+               </form> -->
+               <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-danger">Delete</a>
+           <% }%>
+           <a class="btn btn-sm btn-info" href="/audit/<%= audit._id %>/comments/new">Create a  comment</a>
+        </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">delete post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this post?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <form style="display: inline; padding-left: 1rem;" action="/audit/<%=audit._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-success">Yes</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- bdjkcbksbckdbjcsk-->
+    <div class="card" style="width: 50rem;">
+        <div class="card-body">
+            <div class="card-title">
+               <% audit.comments.forEach(function(comment) { %>
+                   <p><strong><%= comment.author.username%></strong> - <%= comment.text %></p>
+                   <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                   <a class="btn btn-sm btn-info" href="/audit/<%=audit._id%>/comments/<%=comment._id%>/edit" style="float: right;">Edit</a>  
+                   <form action="/audit/<%=audit._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-info" style="float: right; margin-right: 1rem;">Delete</button>
+                </form>   
+                
+           <% } %> 
+               <% }) %>  
+                 
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+
+    <%- include("../partials/footer") %>
