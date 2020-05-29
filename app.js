@@ -282,6 +282,6 @@ app.use('/',authRoutes)
 // create authentucatio 
 //create delete/edit functionality
 
-app.listen(process.env.PORT,function(){
+app.listen(5000,function(){
     console.log('server started for audit')
 })
