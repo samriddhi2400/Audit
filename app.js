@@ -18,7 +18,12 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.use(express.static(__dirname + '/public/'));
 app.use(flash())
-mongoose.connect("mongodb://localhost:27017/audit",{useNewUrlParser:true,useUnifiedTopology:true, useCreateIndex:true,useFindAndModify:false})
+mongoose.connect("mongodb+srv://samriddhi:process.env.ADMIN_PASSWORD@cluster0-byqc7.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true, useCreateIndex:true,useFindAndModify:false})
+.then(() =>{
+    console.log("Connected to DB")
+}).catch(err =>{
+  console.log('error',err.message)
+})
 //passport configuration
 app.use(require('express-session')({
     secret:"audit",
@@ -277,6 +282,6 @@ app.use('/',authRoutes)
 // create authentucatio 
 //create delete/edit functionality
 
-app.listen(5000,function(){
+app.listen(process.env.PORT,function(){
     console.log('server started for audit')
 })
