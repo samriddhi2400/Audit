@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.use(express.static(__dirname + '/public/'));
 app.use(flash())
-mongoose.connect("mongodb+srv://samriddhi:process.env.ADMIN_PASSWORD@cluster0-byqc7.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true, useCreateIndex:true,useFindAndModify:false})
+mongoose.connect("mongodb+srv://samriddhi:FAMilyforever1792413@cluster0-4wvip.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true, useCreateIndex:true,useFindAndModify:false})
 .then(() =>{
     console.log("Connected to DB")
 }).catch(err =>{
