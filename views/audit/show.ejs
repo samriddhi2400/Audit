@@ -1,12 +1,18 @@
 <%- include("../partials/header") %>
-<div class="col-md-9">
-    <div class="card" style="width: 50rem;">
+<style>
+.btn-responsive{
+  white-space: normal !important;
+    word-wrap: break-word;
+}
+</style>
+<div class="container" style="min-height: 60vh;">
+    <div class="card" style="width: 80vw; margin-top: 15vh;">
         <div class="card-body">
             <h1 class="card-title"><%= audit.title %></h1>
-            <p class="card-text"><%= audit.description %></p>
+            <p class="card-text"><%- audit.description %></p>
         
            
-            <a href="/audit" style="float: right;" class="btn btn-sm btn-info" >Back to audit</a>
+            <a href="/audit" style="float: right;" class="btn btn-sm btn-info btn-responsive">Back to audit</a>
            <%/*console.log(audit.author.id) */%>
             <% /*console.log(currentUser._id)*/%>
            <% if(currentUser  && audit.author.id.equals(currentUser._id)){%>
@@ -43,26 +49,22 @@
   </div>
   
 
-<!-- bdjkcbksbckdbjcsk-->
-    <div class="card" style="width: 50rem;">
+<!-- comment-->
+<% audit.comments.forEach(function(comment) { %>
+    <div class="card" style="width: 80vw;">
         <div class="card-body">
-            <div class="card-title">
-               <% audit.comments.forEach(function(comment) { %>
-                   <p><strong><%= comment.author.username%></strong> - <%= comment.text %></p>
-                   <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                   <h5 class="card-title"><strong><%= comment.author.username%></strong> - <%=comment.text %></h5>
+                     <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
                    <a class="btn btn-sm btn-info" href="/audit/<%=audit._id%>/comments/<%=comment._id%>/edit" style="float: right;">Edit</a>  
                    <form action="/audit/<%=audit._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-sm btn-info" style="float: right; margin-right: 1rem;">Delete</button>
-                </form>   
+                </form> 
+                <% } %> 
+                   
+            
+          </div>
+      </div>  
+      <% }) %>  
                 
-           <% } %> 
-               <% }) %>  
-                 
-            </div>
-        </div>
-    </div>
-
-    </div>
-    
-
-    <%- include("../partials/footer") %>
+</div> 
+ <%- include("../partials/footer") %>

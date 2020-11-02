@@ -5,9 +5,9 @@
 	<div class="card-body">
 	  <h1 class="card-title text-center" style="margin-bottom:3rem" > Edit <%=audit.title%></h1>
 	  <p class="card-text"><a href="/audit">back to audit</a></p>
-  <form action="/audit/<%= audit._id%>?_method=PUT" method="POST">
-	<input type="text" value="<%= audit.title%>" style="margin-bottom: 3rem; margin-left: 3rem;" name="audit[title]">
-    <textarea name="audit[description]" style="margin-bottom: 3rem; margin-left: 3rem;"><%= audit.description%></textarea>
+      <form action="/audit/<%= audit._id%>?_method=PUT" method="POST">
+	    <input type="text" value="<%= audit.title%>" style="margin-bottom: 3rem; margin-left: 3rem;" name="audit[title]">
+	   <textarea cols="25" rows="7"name="audit[description]"  style="margin-bottom: 3rem; margin-left: 3rem;"><%= audit.description %></textarea>
 	<button class="btn btn-primary"  style="margin-top: 1rem; margin-left: 6.5rem;">submit</button>
 </form>
 </div>

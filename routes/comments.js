@@ -1,5 +1,6 @@
 var express=require('express')
 var router=express.Router({mergeParams:true})
+var anchorme=require('anchorme').default
 var Audit=require('../models/audit')
 var Comment=require('../models/comments')
 var middleware=require('../middleware')
@@ -26,12 +27,20 @@ router.get('/new',middleware.isLoggedIn,function(req,res){
 })
 
 router.post('/',middleware.isLoggedIn,function(req,res){
+    // var  commentBody=anchorme(req.body.comment)
+    // var newComment={
+    //     text:commentBody,
+    //     author:{
+    //         id:req.user._id,
+    //         username:req.user.username
+    //     }
+    // }
   Audit.findById(req.params.id)
   .then(audit =>{
       Comment.create(req.body.comment)
       .then(comment =>{
-          comment.author.id=req.user._id
-          comment.author.username=req.user.username
+        comment.author.id=req.user._id
+        comment.author.username=req.user.username
           comment.save()
           audit.comments.push(comment)
           audit.save()

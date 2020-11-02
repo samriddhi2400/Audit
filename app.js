@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://samriddhi:FAMilyforever1792413@cluster0-4wvip.mo
 }).catch(err =>{
   console.log('error',err.message)
 })
-//passport configuration
+//passport configuration 
 app.use(require('express-session')({
     secret:"audit",
     resave:false,
@@ -272,15 +272,6 @@ app.use('/audit/:id/comments',commentRoutes)
 app.use('/',authRoutes)
 
 
-
-
-
-
-// create new info get/post
-// create new comment get/post
-// create show page
-// create authentucatio 
-//create delete/edit functionality
 
 app.listen(5000,function(){
     console.log('server started for audit')
